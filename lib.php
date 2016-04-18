@@ -77,6 +77,7 @@ function local_quickrenamequestioncategories_extend_settings_navigation(navigati
         return;
     }
     $parentnode = $nav->get('modulesettings');
+    $questionbank = null;
     foreach ($parentnode->children as $node) {
         if ($node->text == get_string('questionbank', 'question')) {
             $questionbank = $node;
