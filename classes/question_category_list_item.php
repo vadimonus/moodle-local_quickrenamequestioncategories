@@ -50,14 +50,11 @@ class local_quickrenamequestioncategories_question_category_list_item extends qu
      * @return string
      */
     public function item_html($extraargs = array()) {
-        global $CFG, $OUTPUT;
         $category = $this->item;
-
-        $categoryname = format_string($category->name, true, array('context' => $this->parentlist->context));
 
         $attributes = array();
         $attributes['type'] = 'text';
-        $attributes['value'] = $categoryname;
+        $attributes['value'] = $category->name;
         $attributes['name'] = "categoryname[{$category->contextid}][{$category->id}]";
         $attributes['size'] = 80;
         $attributes['maxsize'] = 254;
