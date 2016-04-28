@@ -3,7 +3,7 @@ Quick question categories renaming Moodle plugin
 
 Requirements
 ------------
-- Moodle 3.0 (build 2015051100) or later.
+- Moodle 3.0 (build 2015111600) or later.
 
 Installation
 ------------
@@ -27,4 +27,7 @@ Links
 Changes
 -------
 Release 0.9 (build 2016041800):
-- Initial release.
+- First public release.
+
+Release 1.0 (build 2016042800):
+- Fix error with "<" and ">" chars in category name.

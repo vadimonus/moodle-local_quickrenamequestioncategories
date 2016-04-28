@@ -25,8 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_quickrenamequestioncategories';
-$plugin->version   = 2016041800;
 $plugin->version   = 2016042800;
-$plugin->release = '0.9.1';
-$plugin->maturity = MATURITY_RC;
-$plugin->requires  = 2015051100; // Moodle 3.0.
+$plugin->release = '1.0';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->requires  = 2015111600; // Moodle 3.0.
