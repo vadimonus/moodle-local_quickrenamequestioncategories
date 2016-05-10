@@ -121,7 +121,9 @@ class local_quickrenamequestioncategories_question_category_object extends quest
 
         echo html_writer::end_tag('form');
 
-        echo $list->display_page_numbers();
+        if (!empty($list)) {
+            echo $list->display_page_numbers();
+        }
     }
 
 }
