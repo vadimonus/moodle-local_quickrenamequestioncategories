@@ -26,11 +26,11 @@ Links
 
 Changes
 -------
-Release 0.9 (build 2016041800):
-- First public release.
-
-Release 1.0 (build 2016042800):
-- Fix error with "<" and ">" chars in category name.
-
-Release 1.0.1 (build 2016051000):
-- Additional capability checks.
+- Release 0.9 (build 2016041800):
+    - First public release.
+- Release 1.0 (build 2016042800):
+    - Fix error with "<" and ">" chars in category name.
+- Release 1.0.1 (build 2016051000):
+    - Additional capability checks.
+- Release 1.1 (build 2020061200):
+    - Privacy API support.

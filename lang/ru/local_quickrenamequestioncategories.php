@@ -23,4 +23,5 @@
  */
 
 $string['pluginname'] = 'Быстрое переименование категорий вопросов';
+$string['privacy:metadata'] = 'Плагин не хранит персональные данные.';
 $string['quickrenamecategories'] = 'Быстрое переименование категорий';

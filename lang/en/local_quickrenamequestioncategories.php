@@ -23,4 +23,5 @@
  */
 
 $string['pluginname'] = 'Quick rename of question categories';
+$string['privacy:metadata'] = 'The plugin does not store any personal data.';
 $string['quickrenamecategories'] = 'Quick categories rename';
