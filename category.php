@@ -26,6 +26,7 @@ require_once("../../../config.php");
 require_once("$CFG->dirroot/question/editlib.php");
 
 use core_question\local\bank\helper as core_question_local_bank_helper;
+use core_question\output\qbank_action_menu;
 
 require_login();
 core_question_local_bank_helper::require_plugin_enabled('qbank_quickrenamecategories');
@@ -52,12 +53,9 @@ if ($cancelbutton) {
     $qcobject->rename_categories($categorynames);
 }
 echo $OUTPUT->header();
-
-if ($CFG->version >= 2016120503.00) { // Moodle 3.2.3.
-    // Print horizontal nav if needed.
-    $renderer = $PAGE->get_renderer('core_question', 'bank');
-    echo $renderer->extra_horizontal_navigation();
-}
+$renderer = $PAGE->get_renderer('core_question', 'bank');
+$qbankaction = new qbank_action_menu($thispageurl);
+echo $renderer->render($qbankaction);
 
 $qcobject = new qbank_quickrenamecategories_question_category_object($pagevars['cpage'], $thispageurl,
         $contexts->having_cap('moodle/question:managecategory'), 0, $pagevars['cat'], 0, []);
