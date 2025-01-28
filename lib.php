@@ -58,7 +58,7 @@ function qbank_quickrenamecategories_extend_navigation_course(navigation_node $c
     if (!$questionbank) {
         return;
     }
-    $url = new moodle_url('/local/quickrenamequestioncategories/category.php', array('courseid' => $context->instanceid));
+    $url = new moodle_url('/question/bank/quickrenamecategories/category.php', array('courseid' => $context->instanceid));
     $questionbank->add(get_string('quickrenamecategories', 'qbank_quickrenamecategories'), $url,
             navigation_node::TYPE_SETTING, null, 'quickrenamequestioncategories');
 }
@@ -87,7 +87,7 @@ function qbank_quickrenamecategories_extend_settings_navigation(navigation_node 
     if (!$questionbank) {
         return;
     }
-    $url = new moodle_url('/local/quickrenamequestioncategories/category.php', array('cmid' => $context->instanceid));
+    $url = new moodle_url('/question/bank/quickrenamecategories/category.php', array('cmid' => $context->instanceid));
     $questionbank->add(get_string('quickrenamecategories', 'qbank_quickrenamecategories'), $url,
             navigation_node::TYPE_SETTING, null, 'quickrenamequestioncategories');
 }

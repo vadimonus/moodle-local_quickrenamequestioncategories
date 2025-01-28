@@ -28,7 +28,7 @@ require_once("$CFG->dirroot/question/editlib.php");
 require_login();
 
 list($thispageurl, $contexts, $cmid, $cm, $module, $pagevars) = question_edit_setup('categories',
-        '/local/quickrenamequestioncategories/category.php');
+        '/question/bank/quickrenamecategories/category.php');
 
 $savebutton = optional_param('save', '', PARAM_RAW);
 $cancelbutton = optional_param('cancel', '', PARAM_RAW);
