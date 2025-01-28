@@ -24,8 +24,6 @@
 
 namespace qbank_quickrenamecategories\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Tool for quick renaming of many question categories.
  *
