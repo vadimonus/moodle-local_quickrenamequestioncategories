@@ -60,7 +60,7 @@ class qbank_quickrenamecategories_question_category_object extends question_cate
         $count = 1;
         $paged = false;
         foreach ($this->editlists as $key => $list) {
-            list($paged, $count) = $this->editlists[$key]->list_from_records($paged, $count);
+            [$paged, $count] = $this->editlists[$key]->list_from_records($paged, $count);
         }
     }
 
@@ -73,7 +73,7 @@ class qbank_quickrenamecategories_question_category_object extends question_cate
 
         echo $OUTPUT->heading(get_string('quickrenamecategories', 'qbank_quickrenamecategories'));
 
-        $attributes = array();
+        $attributes = [];
         $attributes['action'] = $this->pageurl;
         $attributes['method'] = 'post';
         $attributes['accept-charset'] = 'utf-8';
@@ -81,14 +81,14 @@ class qbank_quickrenamecategories_question_category_object extends question_cate
         $attributes['class'] = 'mform';
         echo html_writer::start_tag('form', $attributes);
 
-        $attributes = array();
+        $attributes = [];
         $attributes['name'] = 'sesskey';
         $attributes['value'] = sesskey();
         $attributes['type'] = 'hidden';
         echo html_writer::empty_tag('input', $attributes);
 
         foreach ($this->editlists as $context => $list) {
-            $listhtml = $list->to_html(0, array('str' => $this->str));
+            $listhtml = $list->to_html(0, ['str' => $this->str]);
             if ($listhtml) {
                 $classes = 'boxwidthwide boxaligncenter generalbox questioncategories';
                 $classes .= ' contextlevel' . $list->context->contextlevel;
@@ -100,14 +100,14 @@ class qbank_quickrenamecategories_question_category_object extends question_cate
             }
         }
 
-        $attributes = array();
+        $attributes = [];
         $attributes['name'] = 'save';
         $attributes['value'] = get_string('savechanges');
         $attributes['type'] = 'submit';
         $attributes['id'] = 'id_submitbutton';
         $savebutton = html_writer::empty_tag('input', $attributes);
 
-        $attributes = array();
+        $attributes = [];
         $attributes['name'] = 'cancel';
         $attributes['value'] = get_string('cancel');
         $attributes['type'] = 'submit';

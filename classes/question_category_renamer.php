@@ -55,7 +55,7 @@ class qbank_quickrenamecategories_question_category_renamer {
         global $DB;
 
         foreach ($categorynames as $categoryid => $newcategoryname) {
-            $category = $DB->get_record('question_categories', array('id' => $categoryid), 'id, name', MUST_EXIST);
+            $category = $DB->get_record('question_categories', ['id' => $categoryid], 'id, name', MUST_EXIST);
             $category->name = $newcategoryname;
             $DB->update_record('question_categories', $category);
         }

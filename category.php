@@ -27,14 +27,14 @@ require_once("$CFG->dirroot/question/editlib.php");
 
 require_login();
 
-list($thispageurl, $contexts, $cmid, $cm, $module, $pagevars) = question_edit_setup('categories',
+[$thispageurl, $contexts, $cmid, $cm, $module, $pagevars] = question_edit_setup('categories',
         '/question/bank/quickrenamecategories/category.php');
 
 $savebutton = optional_param('save', '', PARAM_RAW);
 $cancelbutton = optional_param('cancel', '', PARAM_RAW);
 
 $url = new moodle_url($thispageurl);
-$url->remove_params(array('cpage'));
+$url->remove_params(['cpage']);
 $PAGE->set_url($url);
 $PAGE->set_title(get_string('quickrenamecategories', 'qbank_quickrenamecategories'));
 $PAGE->set_heading($COURSE->fullname);
@@ -57,6 +57,6 @@ if ($CFG->version >= 2016120503.00) { // Moodle 3.2.3.
 }
 
 $qcobject = new qbank_quickrenamecategories_question_category_object($pagevars['cpage'], $thispageurl,
-        $contexts->having_cap('moodle/question:managecategory'), 0, $pagevars['cat'], 0, array());
+        $contexts->having_cap('moodle/question:managecategory'), 0, $pagevars['cat'], 0, []);
 $qcobject->output_edit_lists();
 echo $OUTPUT->footer();

@@ -51,10 +51,10 @@ class qbank_quickrenamecategories_question_category_list_item extends question_c
      * @param array $extraargs
      * @return string
      */
-    public function item_html($extraargs = array()) {
+    public function item_html($extraargs = []) {
         $category = $this->item;
 
-        $attributes = array();
+        $attributes = [];
         $attributes['type'] = 'text';
         $attributes['value'] = $category->name;
         $attributes['name'] = "categoryname[{$category->contextid}][{$category->id}]";
