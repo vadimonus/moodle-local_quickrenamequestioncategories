@@ -43,49 +43,31 @@ function qbank_quickrenamecategories_extend_navigation_frontpage(navigation_node
  */
 function qbank_quickrenamecategories_extend_navigation_course(navigation_node $coursenode, stdClass $course,
         context $context) {
-    if (!has_capability('moodle/question:managecategory', $context)) {
-        return;
-    }
-    $questionbank = null;
-    foreach ($coursenode->children as $node) {
-        if ($node->text == get_string('questionbank', 'question')) {
-            $questionbank = $node;
-            break;
-        }
-    }
-    if (!$questionbank) {
-        return;
-    }
-    $url = new moodle_url('/question/bank/quickrenamecategories/category.php', ['courseid' => $context->instanceid]);
-    $questionbank->add(get_string('quickrenamecategories', 'qbank_quickrenamecategories'), $url,
-            navigation_node::TYPE_SETTING, null, 'quickrenamequestioncategories');
-}
+    global $CFG, $PAGE;
 
-/**
- * Adds navigation item into question bank in quiz module.
- *
- * @param navigation_node $nav navigation node object
- * @param context $context course context object
- */
-function qbank_quickrenamecategories_extend_settings_navigation(navigation_node $nav, context $context) {
+    if ($CFG->version >= 2023100900.00) { // Moodle 4.3
+        // Since Moodle 4.3 question bank action menu can show plugins.
+        return;
+    }
+
     if (!has_capability('moodle/question:managecategory', $context)) {
         return;
     }
-    if ($context->contextlevel != CONTEXT_MODULE) {
+
+    $url = new moodle_url('/question/bank/quickrenamecategories/category.php', ['courseid' => $context->instanceid]);
+    $coursenode->add(get_string('qbankquickrenamecategories', 'qbank_quickrenamecategories'), $url,
+            navigation_node::TYPE_SETTING, null, 'qbankquickrenamecategories');
+
+    // Quiz module navigation.
+    if (!$PAGE->cm || $PAGE->cm->modname != 'quiz') {
         return;
     }
-    $parentnode = $nav->get('modulesettings');
-    $questionbank = null;
-    foreach ($parentnode->children as $node) {
-        if ($node->text == get_string('questionbank', 'question')) {
-            $questionbank = $node;
-            break;
-        }
-    }
-    if (!$questionbank) {
+    $context = $PAGE->cm->context;
+    if (!has_capability('moodle/question:managecategory', $context)) {
         return;
     }
+    $parentnode = $coursenode->parent->get('modulesettings');
     $url = new moodle_url('/question/bank/quickrenamecategories/category.php', ['cmid' => $context->instanceid]);
-    $questionbank->add(get_string('quickrenamecategories', 'qbank_quickrenamecategories'), $url,
-            navigation_node::TYPE_SETTING, null, 'quickrenamequestioncategories');
+    $parentnode->add(get_string('qbankquickrenamecategories', 'qbank_quickrenamecategories'), $url,
+        navigation_node::TYPE_SETTING, null, 'qbankquickrenamecategories');
 }
