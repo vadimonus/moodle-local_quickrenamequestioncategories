@@ -17,7 +17,7 @@
 /**
  * Tool for quick renaming of many question categories.
  *
- * @package    local_quickrenamequestioncategories
+ * @package    qbank_quickrenamecategories
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,9 +31,9 @@ defined('MOODLE_INTERNAL') || die();
  * @param stdClass $course frontpage course object
  * @param context $context frontpage course context object
  */
-function local_quickrenamequestioncategories_extend_navigation_frontpage(navigation_node $coursenode, stdClass $course,
+function qbank_quickrenamecategories_extend_navigation_frontpage(navigation_node $coursenode, stdClass $course,
         context $context) {
-    local_quickrenamequestioncategories_extend_navigation_course($coursenode, $course, $context);
+    qbank_quickrenamecategories_extend_navigation_course($coursenode, $course, $context);
 }
 
 /**
@@ -43,7 +43,7 @@ function local_quickrenamequestioncategories_extend_navigation_frontpage(navigat
  * @param stdClass $course course object
  * @param context $context course context object
  */
-function local_quickrenamequestioncategories_extend_navigation_course(navigation_node $coursenode, stdClass $course,
+function qbank_quickrenamecategories_extend_navigation_course(navigation_node $coursenode, stdClass $course,
         context $context) {
     if (!has_capability('moodle/question:managecategory', $context)) {
         return;
@@ -59,7 +59,7 @@ function local_quickrenamequestioncategories_extend_navigation_course(navigation
         return;
     }
     $url = new moodle_url('/local/quickrenamequestioncategories/category.php', array('courseid' => $context->instanceid));
-    $questionbank->add(get_string('quickrenamecategories', 'local_quickrenamequestioncategories'), $url,
+    $questionbank->add(get_string('quickrenamecategories', 'qbank_quickrenamecategories'), $url,
             navigation_node::TYPE_SETTING, null, 'quickrenamequestioncategories');
 }
 
@@ -69,7 +69,7 @@ function local_quickrenamequestioncategories_extend_navigation_course(navigation
  * @param navigation_node $nav navigation node object
  * @param context $context course context object
  */
-function local_quickrenamequestioncategories_extend_settings_navigation(navigation_node $nav, context $context) {
+function qbank_quickrenamecategories_extend_settings_navigation(navigation_node $nav, context $context) {
     if (!has_capability('moodle/question:managecategory', $context)) {
         return;
     }
@@ -88,6 +88,6 @@ function local_quickrenamequestioncategories_extend_settings_navigation(navigati
         return;
     }
     $url = new moodle_url('/local/quickrenamequestioncategories/category.php', array('cmid' => $context->instanceid));
-    $questionbank->add(get_string('quickrenamecategories', 'local_quickrenamequestioncategories'), $url,
+    $questionbank->add(get_string('quickrenamecategories', 'qbank_quickrenamecategories'), $url,
             navigation_node::TYPE_SETTING, null, 'quickrenamequestioncategories');
 }

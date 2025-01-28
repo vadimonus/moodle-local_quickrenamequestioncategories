@@ -17,7 +17,7 @@
 /**
  * Tool for quick renaming of many question categories.
  *
- * @package    local_quickrenamequestioncategories
+ * @package    qbank_quickrenamecategories
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,11 +29,11 @@ require_once("$CFG->dirroot/question/category_class.php");
 /**
  * Class representing custom question category
  *
- * @package    local_quickrenamequestioncategories
+ * @package    qbank_quickrenamecategories
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class local_quickrenamequestioncategories_question_category_object extends question_category_object {
+class qbank_quickrenamecategories_question_category_object extends question_category_object {
 
     /**
      * Initializes this classes general category-related variables
@@ -48,7 +48,7 @@ class local_quickrenamequestioncategories_question_category_object extends quest
     public function initialize($page, $contexts, $currentcat, $defaultcategory, $todelete, $addcontexts) {
         $lastlist = null;
         foreach ($contexts as $context) {
-            $this->editlists[$context->id] = new local_quickrenamequestioncategories_question_category_list('ul', '', true,
+            $this->editlists[$context->id] = new qbank_quickrenamecategories_question_category_list('ul', '', true,
                     $this->pageurl, $page, 'cpage', QUESTION_PAGE_LENGTH, $context);
             $this->editlists[$context->id]->lastlist = & $lastlist;
             if ($lastlist !== null) {
@@ -71,7 +71,7 @@ class local_quickrenamequestioncategories_question_category_object extends quest
     public function output_edit_lists() {
         global $OUTPUT;
 
-        echo $OUTPUT->heading(get_string('quickrenamecategories', 'local_quickrenamequestioncategories'));
+        echo $OUTPUT->heading(get_string('quickrenamecategories', 'qbank_quickrenamecategories'));
 
         $attributes = array();
         $attributes['action'] = $this->pageurl;

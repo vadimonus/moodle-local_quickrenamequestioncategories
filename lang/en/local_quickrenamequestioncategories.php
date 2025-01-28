@@ -17,7 +17,7 @@
 /**
  * Tool for quick renaming of many question categories.
  *
- * @package    local_quickrenamequestioncategories
+ * @package    qbank_quickrenamecategories
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

@@ -17,14 +17,14 @@
 /**
  * Tool for quick renaming of many question categories.
  *
- * @package    local_quickrenamequestioncategories
+ * @package    qbank_quickrenamecategories
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'local_quickrenamequestioncategories';
+$plugin->component = 'qbank_quickrenamecategories';
 $plugin->version   = 2020061200;
 $plugin->release = '1.1';
 $plugin->maturity = MATURITY_STABLE;

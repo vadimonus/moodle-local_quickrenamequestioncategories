@@ -21,8 +21,8 @@ Author
 
 Links
 -----
-- Updates: https://moodle.org/plugins/view.php?plugin=local_quickrenamequestioncategories
-- Latest code: https://github.com/vadimonus/moodle-local_quickrenamequestioncategories
+- Updates: https://moodle.org/plugins/view.php?plugin=qbank_quickrenamecategories
+- Latest code: https://github.com/vadimonus/moodle-qbank_quickrenamecategories
 
 Changes
 -------

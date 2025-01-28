@@ -17,7 +17,7 @@
 /**
  * Tool for quick renaming of many question categories.
  *
- * @package    local_quickrenamequestioncategories
+ * @package    qbank_quickrenamecategories
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,15 +29,15 @@ require_once("$CFG->dirroot/question/category_class.php");
 /**
  * Class representing custom category list
  *
- * @package    local_quickrenamequestioncategories
+ * @package    qbank_quickrenamecategories
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class local_quickrenamequestioncategories_question_category_list extends question_category_list {
+class qbank_quickrenamecategories_question_category_list extends question_category_list {
 
     /**
      * @var string
      */
-    public $listitemclassname = 'local_quickrenamequestioncategories_question_category_list_item';
+    public $listitemclassname = 'qbank_quickrenamecategories_question_category_list_item';
 
 }
