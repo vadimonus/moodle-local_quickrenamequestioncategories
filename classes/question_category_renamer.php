@@ -25,6 +25,7 @@
 namespace qbank_quickrenamecategories;
 
 use context;
+use core\event\question_category_updated;
 
 /**
  * Helper class
@@ -40,11 +41,11 @@ class question_category_renamer {
      *
      * @param array $categorynames
      */
-    public function rename_categories($categorynames) {
+    public function rename_categories(array $categorynames): void {
         foreach ($categorynames as $contextid => $categorynamesarray) {
             $context = context::instance_by_id($contextid);
             require_capability('moodle/question:managecategory', $context);
-            $this->rename_categories_in_context($categorynamesarray, $contextid);
+            $this->rename_categories_in_context($categorynamesarray, $context);
         }
     }
 
@@ -52,14 +53,19 @@ class question_category_renamer {
      * Rename categories in one context.
      *
      * @param array $categorynames
+     * @param context $context
      */
-    private function rename_categories_in_context($categorynames) {
+    private function rename_categories_in_context(array $categorynames, context $context): void {
         global $DB;
 
         foreach ($categorynames as $categoryid => $newcategoryname) {
             $category = $DB->get_record('question_categories', ['id' => $categoryid], 'id, name', MUST_EXIST);
-            $category->name = $newcategoryname;
-            $DB->update_record('question_categories', $category);
+            if ($category->name != $newcategoryname) {
+                $category->name = $newcategoryname;
+                $DB->update_record('question_categories', $category);
+                $event = question_category_updated::create_from_question_category_instance($category, $context);
+                $event->trigger();
+            }
         }
     }
 
