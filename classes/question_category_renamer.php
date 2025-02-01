@@ -22,6 +22,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace qbank_quickrenamecategories;
+
+use context;
+
 /**
  * Helper class
  *
@@ -29,7 +33,7 @@
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qbank_quickrenamecategories_question_category_renamer {
+class question_category_renamer {
 
     /**
      * Rename categories in multiple context.

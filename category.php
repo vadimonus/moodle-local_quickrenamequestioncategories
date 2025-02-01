@@ -27,6 +27,8 @@ require_once("$CFG->dirroot/question/editlib.php");
 
 use core_question\local\bank\helper as core_question_local_bank_helper;
 use core_question\output\qbank_action_menu;
+use qbank_quickrenamecategories\question_category_renamer;
+use qbank_quickrenamecategories\question_category_object;
 
 require_login();
 core_question_local_bank_helper::require_plugin_enabled('qbank_quickrenamecategories');
@@ -49,7 +51,7 @@ if ($cancelbutton) {
     require_sesskey();
     $categorynames = $_POST['categoryname'];
     $categorynames = clean_param_array($categorynames, PARAM_RAW, true);
-    $qcobject = new qbank_quickrenamecategories_question_category_renamer();
+    $qcobject = new question_category_renamer();
     $qcobject->rename_categories($categorynames);
 }
 echo $OUTPUT->header();
@@ -57,7 +59,7 @@ $renderer = $PAGE->get_renderer('core_question', 'bank');
 $qbankaction = new qbank_action_menu($thispageurl);
 echo $renderer->render($qbankaction);
 
-$qcobject = new qbank_quickrenamecategories_question_category_object($pagevars['cpage'], $thispageurl,
+$qcobject = new question_category_object($pagevars['cpage'], $thispageurl,
         $contexts->having_cap('moodle/question:managecategory'), 0, $pagevars['cat'], 0, []);
 $qcobject->output_edit_lists();
 echo $OUTPUT->footer();

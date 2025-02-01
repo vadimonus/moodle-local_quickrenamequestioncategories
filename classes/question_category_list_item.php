@@ -22,9 +22,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace qbank_quickrenamecategories;
 
-require_once("$CFG->dirroot/question/category_class.php");
+use html_writer;
+use qbank_managecategories\question_category_list_item as base_question_category_list_item;
 
 /**
  * Class representing custom category list item
@@ -33,16 +34,16 @@ require_once("$CFG->dirroot/question/category_class.php");
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qbank_quickrenamecategories_question_category_list_item extends question_category_list_item {
+class question_category_list_item extends base_question_category_list_item {
 
     /**
      * Creating list without icons.
      *
      * @param bool $first
      * @param bool $last
-     * @param stdClass $lastitem
+     * @param \stdClass $lastitem
      */
-    public function set_icon_html($first, $last, $lastitem) {
+    public function set_icon_html($first, $last, $lastitem): void {
     }
 
     /**
@@ -51,7 +52,7 @@ class qbank_quickrenamecategories_question_category_list_item extends question_c
      * @param array $extraargs
      * @return string
      */
-    public function item_html($extraargs = []) {
+    public function item_html($extraargs = []): string {
         $category = $this->item;
 
         $attributes = [];

@@ -22,9 +22,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace qbank_quickrenamecategories;
 
-require_once("$CFG->dirroot/question/category_class.php");
+use context;
+use html_writer;
+use qbank_managecategories\question_category_object as base_question_category_object;
 
 /**
  * Class representing custom question category
@@ -33,7 +35,7 @@ require_once("$CFG->dirroot/question/category_class.php");
  * @copyright  2016 Vadim Dvorovenko <Vadimon@mail.ru>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qbank_quickrenamecategories_question_category_object extends question_category_object {
+class question_category_object extends base_question_category_object {
 
     /**
      * Initializes this classes general category-related variables
@@ -45,16 +47,16 @@ class qbank_quickrenamecategories_question_category_object extends question_cate
      * @param int $todelete
      * @param array $addcontexts
      */
-    public function initialize($page, $contexts, $currentcat, $defaultcategory, $todelete, $addcontexts) {
+    public function initialize($page, $contexts, $currentcat, $defaultcategory, $todelete, $addcontexts): void {
         $lastlist = null;
         foreach ($contexts as $context) {
-            $this->editlists[$context->id] = new qbank_quickrenamecategories_question_category_list('ul', '', true,
-                    $this->pageurl, $page, 'cpage', QUESTION_PAGE_LENGTH, $context);
-            $this->editlists[$context->id]->lastlist = & $lastlist;
+            $this->editlists[$context->id] = new question_category_list('ul', '', true,
+                $this->pageurl, $page, 'cpage', QUESTION_PAGE_LENGTH, $context);
+            $this->editlists[$context->id]->lastlist = &$lastlist;
             if ($lastlist !== null) {
-                $lastlist->nextlist = & $this->editlists[$context->id];
+                $lastlist->nextlist = &$this->editlists[$context->id];
             }
-            $lastlist = & $this->editlists[$context->id];
+            $lastlist = &$this->editlists[$context->id];
         }
 
         $count = 1;
@@ -68,7 +70,7 @@ class qbank_quickrenamecategories_question_category_object extends question_cate
      * Outputs a list to allow editing/rearranging of existing categories
      * $this->initialize() must have already been called
      */
-    public function output_edit_lists() {
+    public function output_edit_lists(): void {
         global $OUTPUT;
 
         echo $OUTPUT->heading(get_string('quickrenamecategories', 'qbank_quickrenamecategories'));
@@ -115,7 +117,7 @@ class qbank_quickrenamecategories_question_category_object extends question_cate
         $attributes['id'] = 'id_cancel';
         $cancelbutton = html_writer::empty_tag('input', $attributes);
 
-        $internaldiv = html_writer::div($savebutton.$cancelbutton, 'felement fgroup');
+        $internaldiv = html_writer::div($savebutton . $cancelbutton, 'felement fgroup');
         $externaldiv = html_writer::div($internaldiv, 'fitem fitem_actionbuttons fitem_fgroup');
         echo $externaldiv;
 
