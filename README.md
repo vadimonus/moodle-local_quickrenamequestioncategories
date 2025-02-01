@@ -3,7 +3,7 @@ Quick question categories renaming Moodle plugin
 
 Requirements
 ------------
-- Moodle 3.0 (build 2015111600) or later.
+- Moodle 4.0 (build 2022041900) or later.
 
 Installation
 ------------
@@ -12,8 +12,7 @@ Copy the quickrenamecategories folder into your Moodle /question/bank directory 
 Usage
 -----
 Question bank navigation node will be extended with "Quick categories rename" item. You will be able to rename all categories in one form.
-This can be useful when working with large question banks together witn local_resortquestioncategory and local_renumberquestioncategory
-plugins.
+This can be useful when working with large question banks together with qbank_resortcategory and qbank_renumbercategory plugins.
 
 Author
 ------
@@ -35,3 +34,7 @@ Changes
 - Release 1.1 (build 2020061200):
     - Privacy API support.
     - Question bank tabs.
+- Release 2.0 (build 2025020100)
+    - Renamed from local_quickrenamequestioncategories to qbank_quickrenamecategories.
+    - Refactored for Moodle 4 question bank changes.
+    - Renaming category fires event and is logged.
