@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Tool for deleting question category with question and subcategories.
+ * Tool for quick renaming of many question categories.
  *
  * @package    qbank_quickrenamecategories
  * @copyright  2025 Vadim Dvorovenko <Vadimon@mail.ru>
