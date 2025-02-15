@@ -50,7 +50,7 @@ if ($cancelbutton) {
 } else if ($savebutton) {
     require_sesskey();
     $categorynames = $_POST['categoryname'];
-    $categorynames = clean_param_array($categorynames, PARAM_RAW, true);
+    $categorynames = clean_param_array($categorynames, PARAM_TEXT, true);
     $qcobject = new question_category_renamer();
     $qcobject->rename_categories($categorynames);
 }
