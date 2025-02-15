@@ -38,3 +38,5 @@ Changes
     - Renamed from local_quickrenamequestioncategories to qbank_quickrenamecategories.
     - Refactored for Moodle 4 question bank changes.
     - Renaming category fires event and is logged.
+- Release 2.0.1 (build 2025021500)
+    - Category name validation changed to PARAM_TEXT 

@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qbank_quickrenamecategories';
-$plugin->version   = 2025020100;
-$plugin->release = '2.0';
+$plugin->version   = 2025021500;
+$plugin->release = '2.0.1';
 $plugin->maturity = MATURITY_STABLE;
 $plugin->requires  = 2022041900; // Moodle 4.0.
