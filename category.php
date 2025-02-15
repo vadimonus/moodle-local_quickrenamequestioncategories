@@ -36,8 +36,8 @@ core_question_local_bank_helper::require_plugin_enabled('qbank_quickrenamecatego
 [$thispageurl, $contexts, $cmid, $cm, $module, $pagevars] = question_edit_setup('categories',
         '/question/bank/quickrenamecategories/category.php');
 
-$savebutton = optional_param('save', '', PARAM_RAW);
-$cancelbutton = optional_param('cancel', '', PARAM_RAW);
+$savebutton = optional_param('save', '', PARAM_BOOL);
+$cancelbutton = optional_param('cancel', '', PARAM_BOOL);
 
 $url = new moodle_url($thispageurl);
 $url->remove_params(['cpage']);

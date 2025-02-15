@@ -104,18 +104,19 @@ class question_category_object extends base_question_category_object {
 
         $attributes = [];
         $attributes['name'] = 'save';
-        $attributes['value'] = get_string('savechanges');
+        $attributes['value'] = '1';
         $attributes['type'] = 'submit';
+        $attributes['class'] = 'btn btn-primary';
         $attributes['id'] = 'id_submitbutton';
-        $savebutton = html_writer::empty_tag('input', $attributes);
+        $savebutton = html_writer::tag('button', get_string('savechanges'), $attributes);
 
         $attributes = [];
         $attributes['name'] = 'cancel';
-        $attributes['value'] = get_string('cancel');
+        $attributes['value'] = '1';
         $attributes['type'] = 'submit';
-        $attributes['class'] = 'btn-cancel';
+        $attributes['class'] = 'btn btn-cancel';
         $attributes['id'] = 'id_cancel';
-        $cancelbutton = html_writer::empty_tag('input', $attributes);
+        $cancelbutton = html_writer::tag('button', get_string('cancel'), $attributes);
 
         $internaldiv = html_writer::div($savebutton . $cancelbutton, 'felement fgroup');
         $externaldiv = html_writer::div($internaldiv, 'fitem fitem_actionbuttons fitem_fgroup');
