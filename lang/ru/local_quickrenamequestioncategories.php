@@ -22,6 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Быстрое переименование категорий вопросов';
+$string['pluginname'] = 'Быстрое переименование категорий вопросов (Устарел, используйте qbank_quickrenamecategories)';
 $string['privacy:metadata'] = 'Плагин не хранит персональные данные.';
 $string['quickrenamecategories'] = 'Быстрое переименование категорий';

@@ -25,7 +25,10 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_quickrenamequestioncategories';
-$plugin->version   = 2020061200;
-$plugin->release = '1.1';
+$plugin->version   = 2025022200;
+$plugin->release = '2.0';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->requires  = 2015111600; // Moodle 3.0.
+$plugin->requires  = 2022041900; // Moodle 4.0.
+$plugin->dependencies = [
+    'qbank_quickrenamecategories' => 2025021500,
+];

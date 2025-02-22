@@ -22,6 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Quick rename of question categories';
+$string['pluginname'] = 'Quick rename of question categories (Legacy, use qbank_quickrenamecategories)';
 $string['privacy:metadata'] = 'The plugin does not store any personal data.';
 $string['quickrenamecategories'] = 'Quick categories rename';
