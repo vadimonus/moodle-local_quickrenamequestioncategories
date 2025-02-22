@@ -53,6 +53,7 @@ if ($cancelbutton) {
     $categorynames = clean_param_array($categorynames, PARAM_TEXT, true);
     $qcobject = new question_category_renamer();
     $qcobject->rename_categories($categorynames);
+    redirect($thispageurl);
 }
 echo $OUTPUT->header();
 $renderer = $PAGE->get_renderer('core_question', 'bank');
