@@ -3,7 +3,7 @@ Quick question categories renaming Moodle plugin
 
 Requirements
 ------------
-- Moodle 4.0 (build 2022041900) or later.
+- Moodle 4.5 (build 2024100700) or later.
 
 Installation
 ------------
@@ -40,3 +40,5 @@ Changes
     - Renaming category fires event and is logged.
 - Release 2.0.1 (build 2025021500)
     - Category name validation changed to PARAM_TEXT 
+- Release 3.0 (build 2025022300)
+    - Refactored for Moodle 4.5 question bank management changes. 
