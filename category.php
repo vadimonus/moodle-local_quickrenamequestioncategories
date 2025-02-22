@@ -27,20 +27,28 @@ require_once("$CFG->dirroot/question/editlib.php");
 
 use core_question\local\bank\helper as core_question_local_bank_helper;
 use core_question\output\qbank_action_menu;
+use qbank_quickrenamecategories\output\categories;
+use qbank_quickrenamecategories\question_categories;
 use qbank_quickrenamecategories\question_category_renamer;
-use qbank_quickrenamecategories\question_category_object;
 
 require_login();
 core_question_local_bank_helper::require_plugin_enabled('qbank_quickrenamecategories');
 
 [$thispageurl, $contexts, $cmid, $cm, $module, $pagevars] = question_edit_setup('categories',
         '/question/bank/quickrenamecategories/category.php');
+$courseid = optional_param('courseid', 0, PARAM_INT);
+
+if (!is_null($cmid)) {
+    $thiscontext = context_module::instance($cmid)->id;
+} else {
+    $course = get_course($courseid);
+    $thiscontext = context_course::instance($course->id)->id;
+}
 
 $savebutton = optional_param('save', '', PARAM_BOOL);
 $cancelbutton = optional_param('cancel', '', PARAM_BOOL);
 
 $url = new moodle_url($thispageurl);
-$url->remove_params(['cpage']);
 $PAGE->set_url($url);
 $PAGE->set_title(get_string('quickrenamecategories', 'qbank_quickrenamecategories'));
 $PAGE->set_heading($COURSE->fullname);
@@ -60,7 +68,14 @@ $renderer = $PAGE->get_renderer('core_question', 'bank');
 $qbankaction = new qbank_action_menu($thispageurl);
 echo $renderer->render($qbankaction);
 
-$qcobject = new question_category_object($pagevars['cpage'], $thispageurl,
-        $contexts->having_cap('moodle/question:managecategory'), 0, $pagevars['cat'], 0, []);
-$qcobject->output_edit_lists();
+echo $OUTPUT->heading(get_string('quickrenamecategories', 'qbank_quickrenamecategories'));
+
+$questioncategories = new question_categories(
+    $thispageurl,
+    $contexts->having_cap('moodle/question:managecategory'),
+    $cmid,
+    $courseid,
+    $thiscontext,
+);
+echo $OUTPUT->render(new categories($questioncategories));
 echo $OUTPUT->footer();
