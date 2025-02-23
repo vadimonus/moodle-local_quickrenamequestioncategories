@@ -28,13 +28,13 @@
         "children": []
     }
 }}
-<li>
-    <input type="text" value="{{categoryname}}" name="categoryname[{{contextid}}][{{categoryid}}]" size="80" maxsize="254" />
-    {{#haschildren}}
-        <ul>
-            {{#children}}
+<input type="text" value="{{categoryname}}" name="categoryname[{{contextid}}][{{categoryid}}]" size="80" maxlength="254">
+{{#haschildren}}
+    <ul>
+        {{#children}}
+            <li>
                 {{> qbank_quickrenamecategories/category }}
-            {{/children}}
-        </ul>
-    {{/haschildren}}
-</li>
+            </li>
+        {{/children}}
+    </ul>
+{{/haschildren}}

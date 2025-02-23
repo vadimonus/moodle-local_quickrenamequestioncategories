@@ -37,13 +37,15 @@
     }
 }}
 <form action="{{action}}" method="post" accept-charset="utf-8" autocomplete="off" class="mform">
-    <input name="sesskey" value="{{sesskey}}" type="hidden" />
+    <input name="sesskey" value="{{sesskey}}" type="hidden">
     {{#categories}}
         <div class="box py-3 boxwidthwide boxaligncenter generalbox questioncategories {{ctxlvl}}">
             <h3>{{heading}}</h3>
             <ul>
                 {{#items}}
-                    {{> qbank_quickrenamecategories/category }}
+                    <li>
+                        {{> qbank_quickrenamecategories/category }}
+                    </li>
                 {{/items}}
             </ul>
         </div>
